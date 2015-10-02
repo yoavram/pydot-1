@@ -836,6 +836,7 @@ class Node(Common):
             styles.append(style)
 
         self.obj_dict['attributes']['style'] = ','.join(styles)
+        return self
 
     def to_string(self):
         """Returns a string representation of the node in dot language.
@@ -1257,6 +1258,7 @@ class Graph(Common):
             self.obj_dict['nodes'][graph_node.get_name()].append(graph_node.obj_dict)
 
         graph_node.set_sequence(self.get_next_sequence_number())
+        return self
 
     def del_node(self, name, index=None):
         """Delete a node from the graph.
@@ -1355,6 +1357,7 @@ class Graph(Common):
 
         graph_edge.set_sequence(self.get_next_sequence_number())
         graph_edge.set_parent_graph(self.get_parent_graph())
+        return self
 
     def del_edge(self, src_or_list, dst=None, index=None):
         """Delete an edge from the graph.
@@ -1474,6 +1477,7 @@ class Graph(Common):
         sgraph.set_sequence(self.get_next_sequence_number())
 
         sgraph.set_parent_graph(self.get_parent_graph())
+        return self
 
     def get_subgraph(self, name):
         """Retrieved a subgraph from the graph.
@@ -1757,6 +1761,9 @@ class Dot(Graph):
 
     def __setstate__(self, state):
         self.obj_dict = state
+
+    def _repr_png_(self):
+        return self.create_png()
 
     def set_shape_files(self, file_paths):
         """Add the paths of the required image files.
