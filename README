@@ -16,14 +16,15 @@ GraphViz:  is needed in order to render the graphs into any of
 Installation:
 -------------
 
-Should suffice with doing:
+Either download / clone the repo and run:
 
  python setup.py install
 
-Needless to say, no installation is needed just to use the module. A mere:
+Or using pip:
 
- import pydot
+ pip install git+https://github.com/nlhepler/pydot.git
 
-should do it, provided that the directory containing the modules is on Python
-module search path.
+Examples:
+---------
 
+See the tests folder and this Jupyter notebook: http://nbviewer.ipython.org/github/yoavram/ipython-notebooks/blob/master/pydot_example.ipynb
